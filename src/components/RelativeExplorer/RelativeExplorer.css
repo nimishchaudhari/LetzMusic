@@ -1,0 +1,275 @@
+.relative-explorer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+}
+
+.control-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.control-group select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.play-button {
+  align-self: flex-end;
+  padding: 8px 16px;
+  background-color: #3367D6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.play-button:hover {
+  background-color: #2a56c2;
+}
+
+.tabs {
+  display: flex;
+  margin: 20px 0 0;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+.tab:hover {
+  color: #3367D6;
+}
+
+.tab.active {
+  color: #3367D6;
+  border-bottom: 2px solid #3367D6;
+}
+
+.tab-content {
+  margin-top: 20px;
+}
+
+/* Scales View */
+.scales-view {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.scale-box {
+  flex: 1;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.scale-box h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.scale-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.scale-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #3367D6;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.scale-note:hover {
+  transform: scale(1.1);
+}
+
+.degree {
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+.scale-box button {
+  padding: 8px 16px;
+  background-color: #3367D6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.scale-box button:hover {
+  background-color: #2a56c2;
+}
+
+.relationship-arrow {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Chords View */
+.chords-view {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.chord-box {
+  flex: 1;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.chord-box h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.chord-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.chord-item {
+  padding: 10px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.chord-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chord-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.chord-notes {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.chord-function {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Theory View */
+.theory-view {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.theory-view h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.theory-content {
+  line-height: 1.5;
+}
+
+.theory-content h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #3367D6;
+}
+
+.theory-content ul {
+  padding-left: 20px;
+}
+
+.theory-content li {
+  margin-bottom: 10px;
+}
+
+.example-box {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.example-box h4 {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .scales-view,
+  .chords-view {
+    flex-direction: row;
+  }
+  
+  .relationship-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+  }
+  
+  .play-button {
+    align-self: flex-start;
+  }
+  
+  .chord-list {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
