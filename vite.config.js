@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
+      'modules': resolve(__dirname, 'src/utils'), // Add this to redirect modules to utils
     },
   },
   build: {
