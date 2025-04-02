@@ -44,6 +44,8 @@ Built with:
 - Tone.js for audio synthesis and playback
 - SVG/Canvas for interactive visualizations
 - React Router for navigation
+- Context API for state management
+- Vite for fast builds and modern development experience
 
 ## Project Structure
 
@@ -63,19 +65,54 @@ letz-music/
 │   │   ├── ScaleLab/
 │   │   └── common/
 │   ├── contexts/
+│   │   ├── AudioContext.jsx
+│   │   ├── PlaybackContext.jsx
+│   │   ├── ProgressionContext.jsx
+│   │   ├── ThemeContext.jsx
+│   │   └── UserProgressContext.jsx
 │   ├── pages/
 │   ├── utils/
+│   │   ├── audio-engine.js
+│   │   ├── music-theory.js
+│   │   ├── visualizations.js
+│   │   └── index.js
 │   ├── App.jsx
 │   └── index.jsx
+├── vite.config.js
 └── package.json
 ```
 
 ## Development
 
 1. Clone the repository
-2. Install dependencies with `npm install`
-3. Start the development server with `npm start`
-4. Build for production with `npm run build`
+```bash
+git clone https://github.com/nimishchaudhari/LetzMusic.git
+cd LetzMusic
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Start the development server
+```bash
+npm start
+```
+
+4. Build for production
+```bash
+npm run build
+```
+
+5. Deploy to GitHub Pages
+```bash
+npm run deploy
+```
+
+## Deployment
+
+The application is automatically deployed to GitHub Pages using GitHub Actions when changes are pushed to the main branch.
 
 ## License
 
