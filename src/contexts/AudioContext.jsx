@@ -51,6 +51,27 @@ export const AudioProvider = ({ children }) => {
     }
   };
 
+  // Play an interval (two notes in sequence)
+  const playInterval = async (note1, note2, gap = 0.5) => {
+    if (!isAudioEnabled) return;
+    
+    const isInit = initialized || await initialize();
+    if (isInit && synth) {
+      // Play the first note
+      synth.triggerAttackRelease(note1, '8n');
+      
+      // Play the second note after a delay
+      setTimeout(() => {
+        synth.triggerAttackRelease(note2, '8n');
+        
+        // Play both notes together after another delay
+        setTimeout(() => {
+          synth.triggerAttackRelease([note1, note2], '2n');
+        }, gap * 1000);
+      }, gap * 1000);
+    }
+  };
+
   // Play a chord (multiple notes at once)
   const playChord = async (notes, duration = '2n') => {
     if (!isAudioEnabled) return;
@@ -134,6 +155,7 @@ export const AudioProvider = ({ children }) => {
     playNote,
     playChord,
     playSequence,
+    playInterval,
     stopAll,
     isAudioEnabled
   };
