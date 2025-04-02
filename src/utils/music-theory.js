@@ -62,6 +62,40 @@ export const INTERVALS = {
   12: 'Octave',
 };
 
+// Interval character descriptions
+export const INTERVAL_CHARACTERS = {
+  0: 'Perfect consonance, foundation for harmony',
+  1: 'Strong dissonance, creates tension and urgency',
+  2: 'Mild dissonance, used for stepwise motion and creating movement',
+  3: 'Imperfect consonance, dark and somber quality',
+  4: 'Imperfect consonance, bright and happy quality',
+  5: 'Perfect consonance with a suspended quality, seeking resolution',
+  6: 'Strong dissonance, historically the "devil\'s interval"',
+  7: 'Perfect consonance, stable and grounding',
+  8: 'Imperfect consonance with melancholic quality',
+  9: 'Imperfect consonance, warm and bright',
+  10: 'Mild dissonance, creates tension that resolves to the tonic',
+  11: 'Strong dissonance, creates anticipation for resolution',
+  12: 'Perfect consonance, emphasizes stability',
+};
+
+// Frequency ratios for just intonation
+export const FREQUENCY_RATIOS = {
+  0: '1:1',
+  1: '16:15',
+  2: '9:8',
+  3: '6:5',
+  4: '5:4',
+  5: '4:3',
+  6: '45:32',
+  7: '3:2',
+  8: '8:5',
+  9: '5:3',
+  10: '9:5',
+  11: '15:8',
+  12: '2:1',
+};
+
 // Chord function names
 export const CHORD_FUNCTIONS = {
   major: [
@@ -139,7 +173,7 @@ export const generateChord = (rootNote, chordType = 'maj') => {
  * Calculate the interval between two notes
  * @param {string} note1 - First note
  * @param {string} note2 - Second note
- * @returns {Object} Interval information (semitones, name)
+ * @returns {Object} Interval information
  */
 export const getInterval = (note1, note2) => {
   const index1 = getNoteIndex(note1);
@@ -153,7 +187,9 @@ export const getInterval = (note1, note2) => {
   
   return {
     semitones,
-    name: INTERVALS[semitones]
+    name: INTERVALS[semitones],
+    character: INTERVAL_CHARACTERS[semitones],
+    ratio: FREQUENCY_RATIOS[semitones]
   };
 };
 
