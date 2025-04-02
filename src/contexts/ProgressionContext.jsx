@@ -145,4 +145,5 @@ export const ProgressionProvider = ({ children }) => {
   );
 };
 
-export default ProgressionContext;
+// Export the provider component instead of the context
+export default ProgressionProvider;
