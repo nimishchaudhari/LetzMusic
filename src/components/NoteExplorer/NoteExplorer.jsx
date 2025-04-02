@@ -1,19 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Keyboard from './Keyboard';
 import NoteDisplay from './NoteDisplay';
-import { MusicTheory, AudioEngine } from '../../modules';
+import { AudioContext } from '../../contexts/AudioContext';
+import * as MusicTheory from '../../utils/music-theory';
 
 const NoteExplorer = () => {
   const [currentNote, setCurrentNote] = useState(null);
+  const { playNote, initialize } = useContext(AudioContext);
 
   useEffect(() => {
-    AudioEngine.initialize();
-  }, []);
+    initialize();
+  }, [initialize]);
 
   const handleNoteSelect = (noteName) => {
-    const note = MusicTheory.getNote(noteName);
+    // Create a note object with the basic information
+    const octave = 4; // Default octave
+    const note = {
+      name: noteName,
+      frequency: 440 * Math.pow(2, (MusicTheory.getNoteIndex(noteName) - 9) / 12) // A4 = 440Hz as reference
+    };
     setCurrentNote(note);
-    AudioEngine.playNote(note);
+    playNote(`${noteName}${octave}`);
   };
 
   return (
