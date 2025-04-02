@@ -1,100 +1,86 @@
 # LetzMusic
 
-LetzMusic is an interactive music theory learning application designed to demonstrate how musical elements gain meaning through their relationships to each other.
+LetzMusic is an interactive web application designed to make learning music theory intuitive and engaging. The application demonstrates how musical elements gain meaning through their relationships to each other, providing a holistic understanding of music theory concepts.
+
+## Live Demo
+
+Visit [https://nimishchaudhari.github.io/LetzMusic](https://nimishchaudhari.github.io/LetzMusic) to see the application in action.
 
 ## Project Overview
 
-Rather than teaching isolated music theory facts, LetzMusic focuses on helping users understand the connections between notes, intervals, scales, and chords, making music theory intuitive and practical. The application provides interactive visualizations and audio examples to create a multi-sensory learning experience.
+LetzMusic helps users understand music theory concepts through interactive visualizations and audio examples. The application is designed for:
 
-## Key Features
+- Beginners with no prior music theory knowledge
+- Instrument players looking to deepen their theoretical understanding
+- Students with basic theory knowledge seeking more advanced concepts
 
-- **Interactive Tools**: Visual and audio-based tools for exploring musical concepts
-- **Personalized Learning Paths**: Tailored learning experiences based on user background and goals
-- **Multi-sensory Learning**: See and hear musical relationships simultaneously
-- **Progress Tracking**: Built-in system to track concept mastery and learning progress
+## Features
 
-## Interactive Components
+### Note Explorer
+Demonstrates how a single note functions differently in various musical contexts. Helps users understand how notes gain meaning through their relationship to a key center.
 
-1. **Note Explorer**: Demonstrates how a single note functions differently in various musical contexts
-2. **Interval Demonstrator**: Shows how intervals create relationships between notes
-3. **Scale Laboratory**: Allows users to build and experiment with different scales and modes
-4. **Chord Function Visualizer**: Illustrates how chords derive meaning from their relationship to a key center
-5. **Relative Major/Minor Explorer**: Demonstrates the relationship between relative major and minor keys
-6. **Circle of Fifths Navigator**: Interactive visualization of key relationships
-7. **Mode Transformer**: Shows how modes are transformations of the same set of notes
+### Interval Demonstrator
+Shows how intervals create relationships between notes with visual and audio feedback. Users can see and hear the distance between notes and understand concepts like consonance and dissonance.
 
-## Technologies Used
+### Scale Lab
+Interactive tool showing how scales are built from specific interval patterns. Users can explore scale construction, step patterns, and scale characteristics.
 
-- **React**: Frontend library for building the user interface
-- **Tone.js**: Audio framework for synthesis and playback
-- **LocalStorage**: Client-side persistence for saving user progress
-- **SVG/Canvas**: Interactive musical visualizations
-- **GitHub Pages**: Hosting platform for the application
+### Relative Explorer
+Demonstrates the relationship between relative major and minor keys. Users can see how these scales share the same notes but create different emotional feelings.
 
-## Learning Paths
+### Circle of Fifths
+Interactive visualization of key relationships through the circle of fifths. Allows users to explore key signatures, related keys, and modulation concepts.
 
-The application offers three different learning paths based on user experience level:
+### Chord Visualizer
+Demonstrates how chords derive meaning from their relationship to a key center. Users can see and hear triads built on scale degrees, understand chord function, and explore chord progressions.
 
-1. **Complete Beginners**: Build a foundation with basics of notes, intervals, scales, and chords
-2. **Instrument Players**: Connect theory to practice with focus on practical applications
-3. **Theory Basics**: Deepen understanding with advanced concepts and relationships
+### Mode Transformer
+Shows how modes are transformations of the same set of notes from different starting positions. Users can explore the unique sound and character of each mode through visual and audio examples.
 
-## Development Phases
+## Technical Implementation
 
-The project is being implemented in five phases:
+Built with:
+- React.js for the user interface
+- Tone.js for audio synthesis and playback
+- SVG/Canvas for interactive visualizations
+- React Router for navigation
 
-1. **Foundation and Core Components** (4-6 weeks): Project setup, audio engine, base visualizations ✅
-2. **Interactive Tools Development** (6-8 weeks): Implementation of the seven key components 🚧
-   - Note Explorer
-   - Interval Relationship Demonstrator
-   - Scale Construction Laboratory  
-   - Relative Major/Minor Explorer
-   - Circle of Fifths Navigator
-   - Chord Function Visualizer
-   - Mode Transformer
-3. **Content Development** (4-6 weeks): Comprehensive explanations and learning paths
-4. **User Experience and Polish** (3-4 weeks): Onboarding, dashboard, progress tracking
-5. **Testing and Deployment** (2-3 weeks): Cross-browser testing and GitHub Pages setup
+## Project Structure
 
-## Current Development Status
+```
+letz-music/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── CircleOfFifths/
+│   │   ├── ChordVisualizer/
+│   │   ├── IntervalDemonstrator/
+│   │   ├── ModeTransformer/
+│   │   ├── Navigation/
+│   │   ├── NoteExplorer/
+│   │   ├── RelativeExplorer/
+│   │   ├── ScaleLab/
+│   │   └── common/
+│   ├── contexts/
+│   ├── pages/
+│   ├── utils/
+│   ├── App.jsx
+│   └── index.jsx
+└── package.json
+```
 
-- **Phase 1** (Completed on April 2, 2025): Set up project infrastructure, implemented core utilities (music theory engine, audio engine, and visualization system), created context providers for state management, and developed basic UI components.
-  
-- **Phase 2** (In Progress): Implementing the seven interactive learning tools with full functionality, audio integration, and responsive design.
+## Development
 
-## Installation and Setup
-
-To run the project locally:
-
-1. Clone the repository:
-   ```
-   git clone https://github.com/nimishchaudhari/LetzMusic.git
-   ```
-
-2. Navigate to the project directory:
-   ```
-   cd LetzMusic
-   ```
-
-3. Install dependencies:
-   ```
-   npm install
-   ```
-
-4. Start the development server:
-   ```
-   npm start
-   ```
-
-5. Open your browser and navigate to:
-   ```
-   http://localhost:3000
-   ```
-
-## Deployment
-
-The application is automatically deployed to GitHub Pages when changes are pushed to the main branch, using the GitHub Actions workflow defined in `.github/workflows/deploy.yml`.
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Start the development server with `npm start`
+4. Build for production with `npm run build`
 
 ## License
 
-This project is available under the MIT License.
+This project is open source and available under the MIT License.
+
+## Acknowledgments
+
+Special thanks to all music theory educators and resources that have inspired this project. This application aims to make these concepts more accessible and interactive for a wide audience.
