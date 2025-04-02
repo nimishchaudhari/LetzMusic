@@ -26,7 +26,7 @@ const ModeTransformer = () => {
   const modeDescriptions = {
     'Ionian': {
       character: 'Bright, happy, stable',
-      use: 'Pop, rock, folk, children's songs',
+      use: "Pop, rock, folk, children's songs",
       example: 'Happy Birthday, Twinkle Twinkle Little Star',
       intervals: 'W-W-H-W-W-W-H'
     },
