@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import Keyboard from './Keyboard';
+import Keyboard from './Keyboard';  
 import NoteDisplay from './NoteDisplay';
+import { MusicTheory } from '../../modules';
 
 const NoteExplorer = () => {
   const [currentNote, setCurrentNote] = useState(null);
 
-  const handleNoteSelect = (note) => {
+  const handleNoteSelect = (noteName) => {
+    const note = MusicTheory.getNote(noteName);
     setCurrentNote(note);
     // TODO: Trigger note playback
   };
@@ -14,7 +16,7 @@ const NoteExplorer = () => {
     <div className="note-explorer">
       <h2>Note Explorer</h2>
       <Keyboard onNoteSelect={handleNoteSelect} />
-      <NoteDisplay note={currentNote} />
+      <NoteDisplay note={currentNote} />  
     </div>
   );
 };
