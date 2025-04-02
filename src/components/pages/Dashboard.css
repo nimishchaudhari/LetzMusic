@@ -1,0 +1,207 @@
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+.dashboard h1 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+.dashboard h2 {
+  color: var(--primary-color);
+  margin: 2.5rem 0 1.5rem;
+}
+
+/* Overview cards */
+.dashboard-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.progress-card, .user-level-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 12px;
+  background-color: #f1f1f1;
+  border-radius: 6px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 6px;
+  transition: width 0.5s ease-in-out;
+}
+
+.dashboard-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+}
+
+.user-level {
+  margin: 1rem 0;
+}
+
+.level-badge {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.level-description {
+  margin-top: 1rem;
+  color: var(--dark-gray);
+  line-height: 1.6;
+}
+
+/* Learning path */
+.learning-path {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.learning-item {
+  display: flex;
+  align-items: flex-start;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.learning-item-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 50px;
+  height: 100%;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1.5rem 0;
+}
+
+.learning-item-content {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.learning-item-content h3 {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.learning-item-content p {
+  color: var(--dark-gray);
+  margin-bottom: 1rem;
+}
+
+.learning-item-button {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.learning-item-button:hover {
+  background-color: #1976d2;
+}
+
+/* Tool cards */
+.tool-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.tool-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tool-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+}
+
+.tool-card p {
+  color: var(--dark-gray);
+  margin-bottom: 1.25rem;
+  min-height: 3rem;
+}
+
+.tool-link {
+  display: inline-block;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.tool-link:hover {
+  color: var(--primary-color);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .dashboard-overview {
+    grid-template-columns: 1fr;
+  }
+  
+  .learning-item {
+    flex-direction: column;
+  }
+  
+  .learning-item-number {
+    width: 100%;
+    padding: 0.75rem 0;
+  }
+}
