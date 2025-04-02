@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Keyboard from './Keyboard';
 import NoteDisplay from './NoteDisplay';
-import { AudioContext } from '../../contexts/AudioContext';
+import { useAudio } from '../../contexts/AudioContext';
 import * as MusicTheory from '../../utils/music-theory';
 
 const NoteExplorer = () => {
   const [currentNote, setCurrentNote] = useState(null);
-  const { playNote, initialize } = useContext(AudioContext);
+  const { playNote, initialize } = useAudio();
 
   useEffect(() => {
     initialize();
