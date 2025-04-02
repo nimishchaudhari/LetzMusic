@@ -52,14 +52,14 @@ const Keyboard = ({
   
   // Determine if a note is a black key
   const isBlackKey = (note) => {
-    const noteName = note.replace(/\d/g, '');
+    const noteName = note.replace(/\\d/g, '');
     return noteName.includes('#');
   };
   
   // Get note label based on preference
   const getNoteLabel = (note) => {
-    const noteName = note.replace(/\d/g, '');
-    const octave = note.match(/\d+/)[0];
+    const noteName = note.replace(/\\d/g, '');
+    const octave = note.match(/\\d+/)[0];
     
     switch(noteLabels) {
       case 'none':
@@ -116,6 +116,10 @@ const Keyboard = ({
               }}
               onClick={() => handleNoteClick(note)}
               data-note={note}
+              data-testid={`key-${note}`}
+              role="button"
+              aria-pressed={activeNotes.includes(note)}
+              aria-label={`${note} key`}
             >
               <span className="key-label">
                 {getNoteLabel(note)}
@@ -142,6 +146,10 @@ const Keyboard = ({
               }}
               onClick={() => handleNoteClick(note)}
               data-note={note}
+              data-testid={`key-${note}`}
+              role="button"
+              aria-pressed={activeNotes.includes(note)}
+              aria-label={`${note} key`}
             >
               <span className="key-label">
                 {getNoteLabel(note)}
