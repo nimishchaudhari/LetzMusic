@@ -170,6 +170,37 @@ export const generateChord = (rootNote, chordType = 'maj') => {
 };
 
 /**
+ * Generate chord notes with specific octave for playback
+ * @param {string} rootNote - The root note of the chord
+ * @param {string} chordType - The type of chord (e.g. 'maj', 'min', '7', etc.)
+ * @param {number} octave - The octave for the root note (default: 4)
+ * @returns {string[]} Array of note names with octave numbers for playback
+ */
+export const getChordNotes = (rootNote, chordType = 'maj', octave = 4) => {
+  const chord = generateChord(rootNote, chordType);
+  
+  if (chord.length === 0) {
+    return [];
+  }
+  
+  // Track if we've wrapped around to the next octave
+  let currentOctave = octave;
+  let prevNoteIndex = getNoteIndex(chord[0]);
+  
+  return chord.map((note, index) => {
+    const noteIndex = getNoteIndex(note);
+    
+    // If this note's index is lower than previous note, we've wrapped to next octave
+    if (index > 0 && noteIndex <= prevNoteIndex) {
+      currentOctave += 1;
+    }
+    
+    prevNoteIndex = noteIndex;
+    return `${note}${currentOctave}`;
+  });
+};
+
+/**
  * Calculate the interval between two notes
  * @param {string} note1 - First note
  * @param {string} note2 - Second note
