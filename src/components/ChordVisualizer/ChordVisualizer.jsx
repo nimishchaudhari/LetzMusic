@@ -96,12 +96,12 @@ const ChordVisualizer = () => {
     let numeral = romanNumerals[index];
     
     // Lowercase for minor and diminished chords
-    if (chord.type === 'minor' || chord.type === 'diminished') {
+    if (chord.type === 'min') {
       numeral = numeral.toLowerCase();
     }
     
     // Add symbol for diminished chords
-    if (chord.type === 'diminished') {
+    if (chord.type === 'dim') {
       numeral += '°';
     }
     
@@ -228,9 +228,9 @@ const ChordVisualizer = () => {
                   {chordName}
                 </div>
                 <div className="chord-details">
-                  <div className="chord-name">{chord.root}{chord.type === 'major' ? '' : chord.type === 'minor' ? 'm' : chord.type === 'diminished' ? '°' : ''}</div>
+                  <div className="chord-name">{chord.root}{chord.type === 'maj' ? '' : chord.type === 'min' ? 'm' : chord.type === 'dim' ? '°' : ''}</div>
                   <div className="chord-notes">
-                    {chord.notes.join(' - ')}
+                    {chord.chord.join(' - ')}
                   </div>
                   <div className="chord-function">{chordFunction}</div>
                 </div>
