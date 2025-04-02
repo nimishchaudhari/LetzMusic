@@ -1,0 +1,49 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Component specific styles */
+.page-title {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.instructions {
+  background-color: var(--light-gray);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.controls select {
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--dark-gray);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+  }
+}
