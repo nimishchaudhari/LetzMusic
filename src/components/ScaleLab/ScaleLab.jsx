@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   NOTES, 
   SCALE_FORMULAS, 
   generateScale,
   getNoteIndex
 } from '../../utils/music-theory';
-import { AudioContext } from '../../contexts/AudioContext';
+import { useAudio } from '../../contexts/AudioContext';
 import './ScaleLab.css';
 
 const ScaleLab = () => {
@@ -14,7 +14,7 @@ const ScaleLab = () => {
   const [currentScale, setCurrentScale] = useState([]);
   const [colorMapping, setColorMapping] = useState({});
   const [steps, setSteps] = useState([]);
-  const { playNote, playSequence } = useContext(AudioContext);
+  const { playNote, playSequence } = useAudio();
 
   // Update the scale whenever root note or scale type changes
   useEffect(() => {
