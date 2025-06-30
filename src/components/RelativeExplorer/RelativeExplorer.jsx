@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   NOTES, 
   generateScale, 
   getRelativeKey,
   getDiatonicChords
 } from '../../utils/music-theory';
-import { AudioContext } from '../../contexts/AudioContext';
+import { useAudio } from '../../contexts/AudioContext';
 import './RelativeExplorer.css';
 
 const RelativeExplorer = () => {
@@ -21,7 +21,7 @@ const RelativeExplorer = () => {
   
   const [activeTab, setActiveTab] = useState('scales');
   
-  const { playNote, playSequence, playChord } = useContext(AudioContext);
+  const { playNote, playSequence, playChord } = useAudio();
 
   // Update scales and chords when root note or scale type changes
   useEffect(() => {

@@ -281,6 +281,130 @@ class AudioEngine {
     
     return instrument;
   }
+
+  /**
+   * Play interval with configurable timing for ear training
+   * @param {string} note1 - First note
+   * @param {string} note2 - Second note  
+   * @param {Object} options - Playback options
+   */
+  async playIntervalForTraining(note1, note2, options = {}) {
+    const {
+      sequential = true,
+      gap = 0.8,
+      duration = '2n',
+      repeat = 1
+    } = options;
+    
+    if (!this.initialized) {
+      const success = await this.initialize();
+      if (!success) return;
+    }
+
+    const playInterval = () => {
+      if (sequential) {
+        // Play notes in sequence
+        this.synth.triggerAttackRelease(note1, duration);
+        setTimeout(() => {
+          this.synth.triggerAttackRelease(note2, duration);
+        }, gap * 1000);
+      } else {
+        // Play notes together
+        this.synth.triggerAttackRelease([note1, note2], duration);
+      }
+    };
+
+    // Play the interval
+    for (let i = 0; i < repeat; i++) {
+      if (i > 0) {
+        await new Promise(resolve => setTimeout(resolve, (gap + 2) * 1000));
+      }
+      playInterval();
+    }
+  }
+
+  /**
+   * Play chord with arpeggiation option for ear training
+   * @param {string[]} notes - Array of chord notes
+   * @param {Object} options - Playback options
+   */
+  async playChordForTraining(notes, options = {}) {
+    const {
+      arpeggiate = false,
+      arpeggiateSpeed = 150,
+      duration = '2n',
+      repeat = 1
+    } = options;
+    
+    if (!this.initialized) {
+      const success = await this.initialize();
+      if (!success) return;
+    }
+
+    const playChord = () => {
+      if (arpeggiate) {
+        // Play as arpeggio
+        notes.forEach((note, index) => {
+          setTimeout(() => {
+            this.synth.triggerAttackRelease(note, duration);
+          }, index * (1000 / arpeggiateSpeed));
+        });
+      } else {
+        // Play all notes together
+        this.synth.triggerAttackRelease(notes, duration);
+      }
+    };
+
+    // Play the chord
+    for (let i = 0; i < repeat; i++) {
+      if (i > 0) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+      }
+      playChord(); 
+    }
+  }
+
+  /**
+   * Play scale with configurable options for ear training
+   * @param {string[]} notes - Array of scale notes
+   * @param {Object} options - Playback options
+   */
+  async playScaleForTraining(notes, options = {}) {
+    const {
+      ascending = true,
+      descending = false,
+      tempo = 120,
+      noteLength = '8n'
+    } = options;
+    
+    if (!this.initialized) {
+      const success = await this.initialize();
+      if (!success) return;
+    }
+
+    const noteDuration = 60 / tempo; // Duration in seconds
+    let playbackNotes = [];
+    
+    if (ascending) {
+      playbackNotes = [...notes];
+    }
+    
+    if (descending) {
+      const descendingNotes = [...notes].reverse();
+      if (ascending) {
+        // Remove duplicate root note when doing ascending + descending
+        descendingNotes.shift();
+      }
+      playbackNotes = [...playbackNotes, ...descendingNotes];
+    }
+
+    // Play the scale
+    playbackNotes.forEach((note, index) => {
+      setTimeout(() => {
+        this.synth.triggerAttackRelease(note, noteLength);
+      }, index * noteDuration * 1000);
+    });
+  }
 }
 
 // Create a singleton instance
