@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { AudioContext } from '../../contexts/AudioContext';
+import React, { useState, useEffect } from 'react';
+import { useAudio } from '../../contexts/AudioContext';
 import { NOTES, getInterval } from '../../utils/music-theory';
 import './IntervalDemonstrator.css';
 
@@ -7,7 +7,7 @@ const IntervalDemonstrator = () => {
   const [firstNote, setFirstNote] = useState(null);
   const [secondNote, setSecondNote] = useState(null);
   const [intervalDetails, setIntervalDetails] = useState(null);
-  const { playNote, playInterval } = useContext(AudioContext);
+  const { playNote, playInterval } = useAudio();
 
   useEffect(() => {
     if (firstNote && secondNote) {
