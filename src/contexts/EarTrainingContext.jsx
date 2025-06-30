@@ -243,10 +243,16 @@ export const EarTrainingProvider = ({ children }) => {
       };
     });
 
-    // Update user progress
-    if (isCorrect) {
-      const conceptId = `${exerciseType}-${difficulty}`;
-      updateConceptMastery(conceptId, 'practiced');
+    // Update user progress with more detailed tracking
+    const conceptId = `eartraining-${exerciseType}-${difficulty}`;
+    const masteryLevel = isCorrect ? 'correct' : 'incorrect';
+    
+    // Track specific exercise types for better progress tracking
+    const specificConceptId = `${exerciseType}-${difficulty}-${currentExercise.correctAnswer}`;
+    
+    if (updateConceptMastery) {
+      updateConceptMastery(conceptId, masteryLevel);
+      updateConceptMastery(specificConceptId, masteryLevel);
     }
 
     return isCorrect;

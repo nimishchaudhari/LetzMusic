@@ -29,6 +29,10 @@
 .exercise-player {
   text-align: center;
   margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .play-button {
@@ -57,6 +61,24 @@
 .play-button.playing {
   background: var(--warning-color, #ffc107);
   color: var(--text-dark, #333);
+}
+
+.replay-button {
+  background: var(--secondary-color, #6c757d);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.replay-button:hover {
+  background: var(--secondary-hover, #5a6268);
+  transform: translateY(-1px);
 }
 
 .exercise-options {

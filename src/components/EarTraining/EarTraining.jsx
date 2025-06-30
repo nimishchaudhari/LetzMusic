@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useEarTraining } from '../../contexts/EarTrainingContext';
 import ExerciseBase from './ExerciseBase';
+import EarTrainingStats from './EarTrainingStats';
 import './EarTraining.css';
 
 const EarTraining = () => {
@@ -250,6 +251,9 @@ const EarTraining = () => {
           )}
         </div>
       </div>
+
+      {/* Progress Statistics */}
+      <EarTrainingStats />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAudio } from '../../contexts/AudioContext';
+import audioEngine from '../../utils/audio-engine';
 import './ExerciseBase.css';
 
 const ExerciseBase = ({ 
@@ -30,46 +31,47 @@ const ExerciseBase = ({
     try {
       switch (exercise.type) {
         case 'interval':
-          if (exercise.playSequentially) {
-            // Play notes in sequence
-            await playNote(exercise.rootNote);
-            setTimeout(async () => {
-              await playNote(exercise.targetNote);
-              setIsPlaying(false);
-            }, 800);
-          } else {
-            // Play notes together
-            await playNote([exercise.rootNote, exercise.targetNote]);
-            setIsPlaying(false);
-          }
+          await audioEngine.playIntervalForTraining(
+            exercise.rootNote,
+            exercise.targetNote,
+            {
+              sequential: exercise.playSequentially,
+              gap: 0.8,
+              duration: '2n'
+            }
+          );
           break;
           
         case 'chord':
-          if (exercise.playArpeggio) {
-            // Play chord as arpeggio
-            await playSequence(exercise.chordNotes, 150);
-            setIsPlaying(false);
-          } else {
-            // Play chord together
-            await playChord(exercise.chordNotes);
-            setIsPlaying(false);
-          }
+          await audioEngine.playChordForTraining(
+            exercise.chordNotes,
+            {
+              arpeggiate: exercise.playArpeggio,
+              arpeggiateSpeed: 120,
+              duration: '2n'
+            }
+          );
           break;
           
         case 'scale':
-          if (exercise.playAscending) {
-            // Play scale ascending
-            await playSequence(exercise.scaleNotes, 120);
-            setIsPlaying(false);
-          }
+          await audioEngine.playScaleForTraining(
+            exercise.scaleNotes,
+            {
+              ascending: exercise.playAscending,
+              descending: exercise.playDescending,
+              tempo: 120
+            }
+          );
           break;
           
         default:
-          setIsPlaying(false);
+          console.warn('Unknown exercise type:', exercise.type);
       }
     } catch (error) {
       console.error('Error playing exercise:', error);
-      setIsPlaying(false);
+    } finally {
+      // Set a timeout to reset playing state
+      setTimeout(() => setIsPlaying(false), 2000);
     }
   };
 
@@ -147,6 +149,16 @@ const ExerciseBase = ({
         >
           {isPlaying ? '♪ Playing...' : '▶ Play Exercise'}
         </button>
+        
+        {!isPlaying && (
+          <button 
+            className="replay-button"
+            onClick={playExercise}
+            title="Replay Exercise"
+          >
+            🔄 Replay
+          </button>
+        )}
       </div>
 
       <div className="exercise-options">
@@ -174,7 +186,21 @@ const ExerciseBase = ({
 
       {showHints && selectedAnswer && !showResult && (
         <div className="exercise-hint">
-          <p>💡 Hint: Try singing or humming the interval to help identify it.</p>
+          {exercise.type === 'interval' && (
+            <p>💡 Hint: Try singing or humming from the first note to the second. Large intervals jump more than small ones.</p>
+          )}
+          {exercise.type === 'chord' && (
+            <p>💡 Hint: Major chords sound bright and happy, minor chords sound darker, diminished chords sound tense.</p>
+          )}
+          {exercise.type === 'scale' && (
+            <p>💡 Hint: Major scales sound bright and complete, minor scales sound darker, modes have unique characteristics.</p>
+          )}
+        </div>
+      )}
+
+      {showHints && !selectedAnswer && !showResult && (
+        <div className="exercise-hint">
+          <p>💡 Select an answer to see a helpful hint!</p>
         </div>
       )}
 
