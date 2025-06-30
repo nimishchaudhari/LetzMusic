@@ -30,6 +30,18 @@ const Navigation = () => {
         <li>
           <NavLink to="/mode-transformer">Mode Transformer</NavLink>
         </li>
+        <li>
+          <NavLink to="/intervals">Intervals</NavLink>
+        </li>
+        <li>
+          <NavLink to="/scales">Scale Lab</NavLink>
+        </li>
+        <li>
+          <NavLink to="/relative">Relative Explorer</NavLink>
+        </li>
+        <li>
+          <NavLink to="/ear-training">Ear Training</NavLink>
+        </li>
       </ul>
     </nav>
   );

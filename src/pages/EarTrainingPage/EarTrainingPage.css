@@ -1,0 +1,9 @@
+.page-container {
+  min-height: 100vh;
+  background: var(--background-color, #f8f9fa);
+}
+
+.content-container {
+  padding-top: 80px; /* Account for fixed navigation */
+  min-height: calc(100vh - 80px);
+}
