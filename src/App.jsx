@@ -14,6 +14,7 @@ import ModeTransformerPage from './pages/ModeTransformerPage/ModeTransformerPage
 import IntervalDemonstratorPage from './pages/IntervalDemonstratorPage/IntervalDemonstratorPage';
 import ScaleLabPage from './pages/ScaleLabPage/ScaleLabPage';
 import RelativeExplorerPage from './pages/RelativeExplorerPage/RelativeExplorerPage';
+import EarTrainingPage from './pages/EarTrainingPage/EarTrainingPage';
 
 /**
  * App - Main application component with routing
@@ -36,6 +37,7 @@ const App = () => {
                   <Route path="/circle-of-fifths" element={<CircleOfFifthsPage />} />
                   <Route path="/chord-visualizer" element={<ChordVisualizerPage />} />
                   <Route path="/mode-transformer" element={<ModeTransformerPage />} />
+                  <Route path="/ear-training" element={<EarTrainingPage />} />
                 </Routes>
               </div>
             </PlaybackProvider>
